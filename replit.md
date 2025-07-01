@@ -2,49 +2,41 @@
 
 ## Overview
 
-This is a modern full-stack web application for "The Crown Barbershop" - a premium men's grooming service website. Built with React frontend and Express.js backend, using TypeScript throughout. The application features a sophisticated barbershop-themed design with a focus on premium aesthetics and user experience.
+This is a modern static website for "The Crown Barbershop" - a premium men's grooming service website. Built with Astro framework using React components where needed, with TypeScript throughout. The application features a sophisticated barbershop-themed design with a focus on premium aesthetics, performance, and SEO optimization.
 
 ## System Architecture
 
 ### Frontend Architecture
-- **Framework**: React 18 with TypeScript
+- **Framework**: Astro 5.x with TypeScript
+- **Components**: React components where interactivity is needed
 - **Styling**: Tailwind CSS with custom barbershop color scheme (gold, black, cream themes)
-- **UI Components**: shadcn/ui component library built on Radix UI primitives
-- **State Management**: TanStack Query for server state management
-- **Routing**: Wouter for lightweight client-side routing
-- **Build Tool**: Vite for fast development and optimized builds
+- **Build Tool**: Astro's optimized build system for static generation
+- **Performance**: Optimized loading with lazy loading and minimal JavaScript
+- **SEO**: Built-in SEO optimization with meta tags and structured markup
 
-### Backend Architecture
-- **Runtime**: Node.js with Express.js server
-- **Language**: TypeScript with ES modules
-- **Database**: PostgreSQL with Drizzle ORM
-- **Database Provider**: Neon serverless PostgreSQL
-- **Session Management**: Built-in session handling with connect-pg-simple
-- **Development**: Hot reload with tsx and Vite integration
-
-### Database Layer
-- **ORM**: Drizzle ORM with type-safe queries
-- **Schema**: Located in `shared/schema.ts` for code sharing between frontend/backend
-- **Migrations**: Managed through Drizzle Kit
-- **Validation**: Zod schemas for runtime type validation
+### Static Site Benefits
+- **Performance**: Fast loading times with static generation
+- **SEO Optimized**: Built-in meta tags, Open Graph, and Twitter Cards
+- **Minimal JavaScript**: Only loads React components when needed
+- **Modern Fonts**: Google Fonts integration with proper preloading
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
 
 ## Key Components
 
-### Frontend Structure
-- **Main App**: Router setup with QueryClient provider and toast notifications
-- **Pages**: Home page with barbershop business information and contact forms
-- **UI Library**: Complete shadcn/ui component set with custom barbershop theming
-- **Styling**: Custom CSS variables for barbershop branding (gold primary, dark themes)
+### Astro Structure
+- **Layout**: Main layout with SEO optimization and global styles
+- **Pages**: Single-page application with all sections on index page
+- **Components**: 
+  - Navigation.astro - Fixed navigation with smooth scrolling
+  - ServiceCard.astro - Service display cards
+  - GalleryItem.astro - Gallery image components
+  - ContactForm.tsx - Interactive React component for form handling
 
-### Backend Structure
-- **Server**: Express application with middleware for logging and error handling
-- **Routes**: Modular route registration system (currently minimal setup)
-- **Storage**: Abstracted storage interface with in-memory implementation for development
-- **Development Setup**: Vite integration for seamless development experience
-
-### Shared Resources
-- **Schema**: Database schema and validation shared between client/server
-- **Types**: Type definitions accessible from both frontend and backend
+### Styling Architecture
+- **Global CSS**: Custom CSS variables for barbershop branding (gold primary, dark themes)
+- **Tailwind Configuration**: Custom color scheme with barbershop-specific classes
+- **Typography**: Premium font combinations (Playfair Display, Inter, Oswald)
+- **Responsive Design**: Mobile-first approach with smooth animations
 
 ## Data Flow
 
