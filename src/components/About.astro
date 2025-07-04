@@ -1,0 +1,167 @@
+---
+// About section component for The Cutting Edge Barbershop & Supplies
+export interface Props {
+  yearsOfExperience?: number;
+  satisfiedClients?: string;
+  
+}
+
+const { 
+  yearsOfExperience = 20,
+  satisfiedClients = "10K+",
+  
+} = Astro.props;
+---
+
+<section id="about" class="py-20 bg-black">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="text-stone-200">
+        <h2 class="text-4xl md:text-5xl font-playfair font-bold mb-6 text-yellow-500">
+          Craftsmanship & Tradition
+        </h2>
+        <p class="text-lg mb-6 leading-relaxed">
+          Since 1952, The Cutting Edge Barbershop & Supplies has been the cornerstone of traditional men's grooming. 
+          Our master barbers combine time-honored techniques with modern precision to deliver an 
+          unparalleled grooming experience.
+        </p>
+        <p class="text-lg mb-6 leading-relaxed">
+          We believe that a great haircut is more than just trimming hair—it's about understanding 
+          your lifestyle, enhancing your natural features, and giving you the confidence to take on the world.
+        </p>
+        <div class="grid grid-cols-3 gap-4 mb-8">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-yellow-500 mb-2">{yearsOfExperience}+</div>
+            <div class="text-sm">Years of Excellence</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-yellow-500 mb-2">{satisfiedClients}</div>
+            <div class="text-sm">Satisfied Clients</div>
+          </div>
+          
+        </div>
+        <a
+          href="#contact"
+          class="inline-block gold-gradient text-black px-8 py-3 rounded-lg font-semibold hover:scale-105 transition-transform duration-300"
+        >
+          Meet Our Team
+        </a>
+      </div>
+      <div class="relative">
+        <img 
+          src="https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000" 
+          alt="Master barber at work" 
+          class="rounded-lg shadow-2xl w-full h-auto"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-lg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gold-gradient {
+    background: linear-gradient(135deg, #f59e0b, #d97706, #f59e0b);
+    background-size: 200% 200%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Mobile Optimizations for About */
+  @media (max-width: 768px) {
+    .py-20 {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    .grid.md\\:grid-cols-2 {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .text-4xl.md\\:text-5xl {
+      font-size: 2rem !important;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .text-lg {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .grid.grid-cols-3 {
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .text-3xl {
+      font-size: 1.75rem;
+    }
+
+    .text-sm {
+      font-size: 0.75rem;
+    }
+
+    .inline-block {
+      display: block;
+      text-align: center;
+      padding: 0.875rem 2rem;
+      font-size: 0.875rem;
+      margin: 0 auto;
+      max-width: 200px;
+    }
+
+    .relative img {
+      height: 300px;
+      object-fit: cover;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .py-20 {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .px-4 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .text-4xl.md\\:text-5xl {
+      font-size: 1.75rem !important;
+    }
+
+    .text-lg {
+      font-size: 0.9rem;
+    }
+
+    .grid.grid-cols-3 {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .text-3xl {
+      font-size: 2rem;
+    }
+
+    .text-sm {
+      font-size: 0.875rem;
+    }
+
+    .inline-block {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.8rem;
+    }
+  }
+</style>

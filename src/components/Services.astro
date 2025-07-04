@@ -1,0 +1,233 @@
+---
+// Services section component for The Cutting Edge Barbershop & Supplies
+export interface Props {
+  services?: Array<{
+    name: string;
+    description: string;
+    price: string;
+    duration: string;
+    image: string;
+  }>;
+}
+
+const defaultServices = [
+  {
+    name: "Kids Cut",
+    description: "Professional haircut for kids. Friendly and patient service.",
+    price: "$24.00",
+    duration: "30 min",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    name: "Lady's Short Hair Cut",
+    description: "Expert short haircuts for ladies, styled to perfection.",
+    price: "$35.00",
+    duration: "30 min",
+    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    name: "Undercut",
+    description: "Trendy undercut style for a sharp, modern look.",
+    price: "$25.00",
+    duration: "30 min",
+    image: "https://images.unsplash.com/photo-1519415943484-cfbdfb6c7b51?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    name: "Beard Clean up",
+    description: "Detailed beard trim and clean up for a polished appearance.",
+    price: "$20.00",
+    duration: "20 min",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    name: "Senior's Cut",
+    description: "Classic haircut for seniors, with care and attention.",
+    price: "$24.00",
+    duration: "30 min",
+    image: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    name: "Kid's cut age 2 to 7 Years",
+    description: "Gentle haircut for young children (ages 2-7).",
+    price: "$20.00",
+    duration: "30 min",
+    image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    name: "Mens Regular HairCut",
+    description: "Classic men's haircut, tailored to your style.",
+    price: "$33.00",
+    duration: "30 min",
+    image: "https://images.unsplash.com/photo-1519415943484-cfbdfb6c7b51?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    name: "Mens Perm",
+    description: "Men's perm for volume and texture. Includes consultation.",
+    price: "$140.00",
+    duration: "2 hr",
+    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    name: "Line up",
+    description: "Sharp, clean line up for a fresh look.",
+    price: "$20.00",
+    duration: "15 min",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    name: "Facial",
+    description: "Relaxing facial treatment for healthy, refreshed skin.",
+    price: "$35.00",
+    duration: "45 min",
+    image: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    name: "Razor Shave",
+    description: "Traditional razor shave with hot towel treatment.",
+    price: "$45.00",
+    duration: "45 min",
+    image: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=800&q=80"
+  }
+];
+
+const { services = defaultServices } = Astro.props;
+---
+
+<section id="services" class="py-20 bg-stone-100">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white p-12 md:p-16 rounded-lg shadow-lg">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-light text-black mb-6 tracking-wider">
+          Premium Services
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto font-light leading-relaxed">
+          Experience the finest in men's grooming with our expertly crafted services,<br class="hidden md:block">
+          delivered by master barbers with decades of combined experience.
+        </p>
+      </div>
+
+      <div class="services-list mb-16">
+        {services.map((service) => (
+          <div class="service-item flex justify-between items-baseline py-5 border-b border-gray-200 last:border-b-0 transition-all duration-300 hover:pl-3 hover:bg-gray-50 hover:-mx-3 hover:pr-6">
+            <div class="service-info">
+              <div class="service-name text-lg font-normal text-gray-800">
+                {service.name}
+              </div>
+              <div class="service-description text-sm text-gray-600 mt-1 font-light">
+                {service.description}
+              </div>
+            </div>
+            <div class="service-price text-xl font-medium text-yellow-600 whitespace-nowrap ml-4">
+              {service.price}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center">
+        <a
+          href="#contact"
+          class="inline-block w-full max-w-xs px-8 py-4 bg-gray-800 text-white text-center font-medium text-sm tracking-widest uppercase transition-all duration-300 hover:bg-black hover:-translate-y-1 hover:shadow-lg"
+        >
+          Book An Appointment
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Mobile Optimizations for Services */
+  @media (max-width: 768px) {
+    .max-w-4xl {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .bg-white {
+      padding: 2rem 1.5rem;
+      margin: 0 0.5rem;
+    }
+
+    .text-4xl.md\\:text-5xl {
+      font-size: 2rem !important;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .text-lg.text-gray-600 {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .service-item {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.25rem 0;
+      gap: 0.75rem;
+    }
+
+    .service-item:hover {
+      padding-left: 0 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    .service-info {
+      width: 100%;
+    }
+
+    .service-name {
+      font-size: 1.125rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .service-description {
+      font-size: 0.875rem;
+      line-height: 1.4;
+    }
+
+    .service-price {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #d97706;
+      margin-left: 0;
+      align-self: flex-start;
+    }
+
+    .inline-block.w-full {
+      padding: 1rem 2rem;
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .bg-white {
+      padding: 1.5rem 1rem;
+      margin: 0 0.25rem;
+    }
+
+    .text-4xl.md\\:text-5xl {
+      font-size: 1.75rem !important;
+    }
+
+    .service-item {
+      padding: 1rem 0;
+    }
+
+    .service-name {
+      font-size: 1rem;
+    }
+
+    .service-description {
+      font-size: 0.8rem;
+    }
+
+    .service-price {
+      font-size: 1.125rem;
+    }
+  }
+</style>

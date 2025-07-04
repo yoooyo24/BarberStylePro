@@ -108,7 +108,7 @@ export default function ContactForm() {
               <option value="signature-cut">Signature Cut ($65)</option>
               <option value="royal-shave">Royal Shave ($55)</option>
               <option value="beard-sculpting">Beard Sculpting ($40)</option>
-              <option value="crown-treatment">Crown Treatment ($120)</option>
+              <option value="cutting-edge-treatment">Cutting Edge Treatment ($120)</option>
               <option value="father-son">Father & Son ($110)</option>
               <option value="consultation">Consultation</option>
             </select>

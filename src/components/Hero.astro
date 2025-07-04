@@ -1,0 +1,434 @@
+---
+// Hero component for The Cutting Edge Barbershop & Supplies
+export interface Props {
+  tagline?: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  backgroundImage?: string;
+  showBookButton?: boolean;
+}
+
+const { 
+  tagline = "Est. 2010 • Hamilton's Premier Destination",
+  title = "The Cutting Edge",
+  subtitle = "Barbershop & Supplies",
+  description = "Elevate your grooming experience with our master barbers. From classic cuts to modern styles, we blend tradition with innovation to deliver exceptional service.",
+  backgroundImage = "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+  showBookButton = true
+} = Astro.props;
+---
+
+<section id="home" class="hero">
+  <div class="hero-background">
+    <div class="hero-image" style={`background-image: url('${backgroundImage}')`}></div>
+  </div>
+  
+  <div class="hero-content">
+    <div class="hero-text">
+      <p class="hero-tagline">{tagline}</p>
+      <h1 class="hero-title">
+        {title}<br>
+        <span class="highlight">{subtitle}</span>
+      </h1>
+      <p class="hero-description">
+        {description}
+      </p>
+      {showBookButton && (
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-gold">Book Appointment</a>
+          <a href="#services" class="btn btn-outline">Our Services</a>
+        </div>
+      )}
+    </div>
+  </div>
+
+  <!-- Features Strip -->
+  <div class="features-strip">
+    <div class="features-container">
+      <div class="feature">
+        <div class="feature-icon">⏱️</div>
+        <div class="feature-text">
+          <h3>Open 6 Days</h3>
+          <p>Mon-Sat: 9am-7pm, Sun: Closed</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">✂️</div>
+        <div class="feature-text">
+          <h3>Expert Barbers</h3>
+          <p>15+ years of combined experience</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⭐</div>
+        <div class="feature-text">
+          <h3>5-Star Service</h3>
+          <p>500+ satisfied customers</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+  /* Hero Section */
+  .hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #0a0a0a;
+    color: #fff;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .hero-image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    z-index: 1;
+  }
+
+  .hero-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+    z-index: 2;
+  }
+
+  .hero-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px;
+    width: 100%;
+    z-index: 10;
+    position: relative;
+  }
+
+  .hero-text {
+    max-width: 600px;
+  }
+
+  .hero-tagline {
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c9a961;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeInLeft 1s ease forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(50px, 7vw, 90px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeInLeft 1s ease 0.2s forwards;
+  }
+
+  .hero-title .highlight {
+    color: #c9a961;
+  }
+
+  .hero-description {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #bbb;
+    margin-bottom: 40px;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeInLeft 1s ease 0.4s forwards;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 20px;
+    opacity: 0;
+    animation: fadeInLeft 1s ease 0.6s forwards;
+  }
+
+  .btn {
+    padding: 18px 40px;
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+    display: inline-block;
+  }
+
+  .btn-gold {
+    background: #c9a961;
+    color: #000;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  .btn-outline:hover {
+    border-color: #c9a961;
+    color: #c9a961;
+  }
+
+  /* Features Strip */
+  .features-strip {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(201, 169, 97, 0.3);
+  }
+
+  .features-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .feature-icon {
+    font-size: 36px;
+    color: #c9a961;
+  }
+
+  .feature-text h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .feature-text p {
+    font-size: 13px;
+    color: #888;
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 1024px) {
+    .hero {
+      min-height: 80vh;
+    }
+
+    .hero-content {
+      padding: 0 30px;
+    }
+
+    .hero-image {
+      width: 40%;
+      clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .hero-title {
+      font-size: clamp(45px, 8vw, 70px);
+    }
+
+    .features-container {
+      padding: 25px 30px;
+      gap: 30px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    /* Hero Section - Complete Mobile Redesign */
+    .hero {
+      padding-top: 70px;
+      min-height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                  url('https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .hero-background,
+    .hero-image {
+      display: none;
+    }
+
+    .hero-content {
+      padding: 0 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: calc(100vh - 70px);
+    }
+
+    .hero-text {
+      max-width: 100%;
+      margin-bottom: 120px; /* Space for features strip */
+    }
+
+    .hero-tagline {
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    .hero-title {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .hero-title br {
+      display: none;
+    }
+
+    .hero-title .highlight {
+      display: block;
+      font-size: 28px;
+      margin-top: 10px;
+    }
+
+    .hero-description {
+      font-size: 16px;
+      line-height: 1.6;
+      padding: 0 10px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 280px;
+      padding: 16px 30px;
+    }
+
+    /* Features Strip Mobile */
+    .features-strip {
+      position: fixed;
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .features-container {
+      padding: 20px;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .feature {
+      justify-content: center;
+      text-align: left;
+    }
+
+    .feature-icon {
+      font-size: 28px;
+    }
+
+    .feature-text h3 {
+      font-size: 14px;
+    }
+
+    .feature-text p {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      background-attachment: scroll;
+    }
+
+    .hero-tagline {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+    }
+
+    .hero-title {
+      font-size: 32px;
+    }
+
+    .hero-title .highlight {
+      font-size: 24px;
+    }
+
+    .hero-description {
+      font-size: 15px;
+      padding: 0;
+    }
+
+    .btn {
+      font-size: 13px;
+      padding: 15px 25px;
+      max-width: 260px;
+    }
+
+    .features-container {
+      padding: 15px;
+      gap: 15px;
+    }
+
+    .feature-icon {
+      font-size: 24px;
+    }
+
+    .feature-text h3 {
+      font-size: 13px;
+    }
+
+    .feature-text p {
+      font-size: 11px;
+    }
+  }
+</style>

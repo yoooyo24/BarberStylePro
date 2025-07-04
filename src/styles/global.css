@@ -124,3 +124,78 @@
     background-color: var(--barbershop-charcoal);
   }
 }
+
+/* Global Mobile Optimizations */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    line-height: 1.5;
+  }
+
+  /* Ensure all sections have proper mobile padding */
+  section {
+    scroll-margin-top: 4rem;
+  }
+
+  /* Improve text readability on mobile */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+  }
+
+  /* Better button sizing for mobile */
+  button, .btn, a[class*="btn"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Improve form elements for mobile */
+  input, textarea, select {
+    font-size: 16px; /* Prevent zoom on iOS */
+    min-height: 44px;
+  }
+
+  /* Better spacing for mobile content */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+
+  /* Even tighter spacing for very small screens */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* Ensure images don't overflow */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets for mobile */
+  button, .btn, a, input[type="submit"] {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  /* Remove hover effects on touch devices */
+  .hover\:scale-105:hover {
+    transform: none;
+  }
+
+  .hover\:-translate-y-1:hover {
+    transform: none;
+  }
+}
