@@ -5,7 +5,7 @@ import react from '@astrojs/react';
 export default defineConfig({
   output: 'static', // Pure static site for marketing
   // Only set site and base for production builds (GitHub Pages)
-  site: process.env.NODE_ENV === 'production' ? 'https://YOUR_GITHUB_USERNAME.github.io' : undefined,
+  site: process.env.NODE_ENV === 'production' ? 'https://yoooyo24.github.io' : undefined,
   base: process.env.NODE_ENV === 'production' ? '/BarberStylePro' : undefined,
   integrations: [
     tailwind({
